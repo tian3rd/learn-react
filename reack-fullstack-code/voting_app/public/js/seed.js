@@ -1,5 +1,6 @@
 window.Seed = (function () {
   function generateVoteCount() {
+    // pseudo random generator
     return Math.floor(Math.random() * 50 + 15);
   }
 

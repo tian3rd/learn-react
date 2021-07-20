@@ -1,18 +1,45 @@
 class ProductList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [],
-    };
-    this.handleProductUpVote = this.handleProductUpVote.bind(this);
-  }
+  //   constructor(props) {
+  //     super(props);
+  //     this.state = {
+  //       products: [],
+  //     };
+  //     this.handleProductUpVote = this.handleProductUpVote.bind(this);
+  //   }
 
+  //   componentDidMount() {
+  //     this.setState({ products: Seed.products });
+  //   }
+
+  //   handleProductUpVote(productId) {
+  //     // map returns a new object
+  //     const nextProducts = this.state.products.map((product) => {
+  //       if (product.id === productId) {
+  //         // Object assign func avoid pointing to the same memory address
+  //         return Object.assign({}, product, {
+  //           votes: product.votes + 1,
+  //         });
+  //       } else {
+  //         return product;
+  //       }
+  //     });
+  //     // don't forget to update state
+  //     this.setState({
+  //       products: nextProducts,
+  //     });
+  //   }
+
+  //  refactor
+  state = {
+    products: [],
+  };
+
+  //  needs to set state
   componentDidMount() {
     this.setState({ products: Seed.products });
   }
 
-  handleProductUpVote(productId) {
-    // map returns a new object
+  handleProductUpVote = (productId) => {
     const nextProducts = this.state.products.map((product) => {
       if (product.id === productId) {
         // Object assign func avoid pointing to the same memory address
@@ -27,7 +54,7 @@ class ProductList extends React.Component {
     this.setState({
       products: nextProducts,
     });
-  }
+  };
 
   render() {
     //   use this.state to replace Seed.products, to reflect dynamically changed upvotes
@@ -52,14 +79,19 @@ class ProductList extends React.Component {
 }
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleUpVote = this.handleUpVote.bind(this);
-  }
+  //   constructor(props) {
+  //     super(props);
+  //     this.handleUpVote = this.handleUpVote.bind(this);
+  //   }
 
-  handleUpVote() {
+  //   handleUpVote() {
+  //     this.props.onVote(this.props.id);
+  //   }
+
+  //  rewrite with arrow function
+  handleUpVote = () => {
     this.props.onVote(this.props.id);
-  }
+  };
 
   render() {
     return (
